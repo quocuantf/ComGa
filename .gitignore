@@ -1,0 +1,15 @@
+obj/ComGa.csproj.nuget.dgspec.json
+obj/ComGa.csproj.nuget.g.props
+obj/ComGa.csproj.nuget.g.targets
+obj/project.assets.json
+obj/project.nuget.cache
+obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs
+obj/Debug/net6.0/ComGa.AssemblyInfo.cs
+obj/Debug/net6.0/ComGa.AssemblyInfoInputs.cache
+obj/Debug/net6.0/ComGa.assets.cache
+obj/Debug/net6.0/ComGa.csproj.AssemblyReference.cache
+obj/Debug/net6.0/ComGa.GeneratedMSBuildEditorConfig.editorconfig
+obj/Debug/net6.0/ComGa.GlobalUsings.g.cs
+obj/Debug/net6.0/ComGa.RazorAssemblyInfo.cache
+obj/Debug/net6.0/ComGa.RazorAssemblyInfo.cs
+obj/Debug/net6.0/project.razor.json
