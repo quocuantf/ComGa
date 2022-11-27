@@ -1,16 +1,23 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ComGa.Models;
-
+using Microsoft.AspNetCore.Identity;
 namespace ComGa.Controllers;
 
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    private readonly UserManager<IdentityUser> _UserManager;
+    public HomeController(ILogger<HomeController> logger,UserManager<IdentityUser> userManager)
     {
         _logger = logger;
+        _UserManager = userManager;
+    }
+
+    public async Task<IActionResult> testAction() {
+        var user = await _UserManager.GetUserAsync(HttpContext.User);
+        var name = user.UserName;
+        return RedirectToAction("Welcome","User", name);
     }
 
     public IActionResult Index()
