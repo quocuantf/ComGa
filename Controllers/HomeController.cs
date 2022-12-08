@@ -7,8 +7,8 @@ namespace ComGa.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly UserManager<IdentityUser> _UserManager;
-    public HomeController(ILogger<HomeController> logger,UserManager<IdentityUser> userManager)
+    private readonly UserManager<User> _UserManager;
+    public HomeController(ILogger<HomeController> logger,UserManager<User> userManager)
     {
         _logger = logger;
         _UserManager = userManager;

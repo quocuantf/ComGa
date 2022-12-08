@@ -1,0 +1,49 @@
+@* @model IEnumerable<ComGa.Models.Product>; *@
+@* @using X.PagedList.Mvc.Core;   
+@using X.PagedList; *@
+@model IEnumerable<ComGa.Models.Product>
+
+@* @section Styles {
+} *@
+    <link rel="stylesheet" href="~/css/Product.css">
+<h1>Product</h1>
+<div class="container-md">
+    <div>
+        @Html.ActionLink("Actionlink", "test","Product", new {categoryID = "1" , maxitem = "3"})
+        <a href="@Url.Action("test", "Product", new {categoryID = "1" , maxitem = "3"})">Url action</a>
+        <h1>Banner vip</h1>
+    </div>
+    <!-- Slide Bar -->
+    <!-- End Slide Bar -->
+
+@* 
+    <aside class="product-category">
+        @foreach (var item in ViewBag.categorys as IList<ComGa.Models.ProductCategory>) {    
+            <a class="category" 
+                href="@Url.ActionLink("Index", "Product", 
+                new {categoryID = item.CateGoryID, _pageNumer = Model.PageNumber})">
+                @Html.DisplayFor(viewDataItem => item.CateoryName)
+            </a>        
+        }
+    </aside> *@
+    <div class=product-container>
+        @foreach (var item in Model) {
+            <div class=product-card>
+                <div class="card-image">
+                    <a asp-action="details" asp-route-id="@item.ProductID">
+                        <img class="product-img" src="@Html.DisplayFor(model => item.ThumbnailPhotoPath)" alt="Image Erro">
+                    </a>
+                </div>
+                <p class="product-name">@Html.DisplayFor(model => item.ProductName)</p>
+                <div class="card-footer">
+                    <span class="product-price">@Html.DisplayFor(model => item.Price) VND</span>    
+                    <a class="buy-button">mua</a>
+                </div>
+            </div>
+        }
+    </div>
+    <br />
+    @* Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index", 
+        new { _pageNumber = page})) *@
+</div>

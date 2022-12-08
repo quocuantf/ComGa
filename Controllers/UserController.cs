@@ -1,18 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using ComGa.Models;
+using ComGa.Repository;
 namespace ComGa.Controllers {
     public class UserController : Controller {
-        public readonly UserManager<IdentityUser> _UserManager;
-        public readonly SignInManager<IdentityUser> _SignInManager;
+        public readonly UserManager<User> _UserManager;
+        public readonly SignInManager<User> _SignInManager;
+        public readonly IUserReposity _UserReposity;
         //Con inject la doi con kho
-        public UserController(UserManager<IdentityUser> userManager,
-                                SignInManager<IdentityUser> signInManager ) {
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, IUserReposity userReposity ) {
             _UserManager = userManager;
             _SignInManager = signInManager;
-
+            _UserReposity = userReposity;
         }
-        public IActionResult Idex() {
+        
+        public IActionResult Index() {
+            ViewBag.TuanDZ = _UserReposity.getUserID();
             return View();
         }
         public IActionResult Register() {
@@ -29,7 +32,7 @@ namespace ComGa.Controllers {
         [HttpPost]
         public async Task<IActionResult> Register(UserRegister userResgisterModel) {
             if (ModelState.IsValid) {
-                var user = new IdentityUser {
+                var user = new User {
                     Email = userResgisterModel.Email,
                     UserName = userResgisterModel.Email,
                 };
